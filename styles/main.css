@@ -1,0 +1,1050 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f5f5f5;
+    color: #333333;
+    min-height: 100vh;
+}
+
+/* Layout */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    width: 95%; /* Ensure some margin on smaller screens */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2196F3;
+    font-weight: 300;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Sections */
+section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Wage Input Section */
+.wage-input-section {
+    text-align: center;
+}
+
+.wage-input-section label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.wage-input-section input {
+    width: 200px;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.wage-input-section input:focus {
+    outline: none;
+    border-color: #2196F3;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+    display: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-left: 3px solid #f44336;
+    text-align: left;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+/* エラータイプ別のスタイル */
+.error-wage {
+    border-left-color: #f44336;
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.error-timer {
+    border-left-color: #FF9800;
+    background-color: rgba(255, 152, 0, 0.1);
+}
+
+.error-storage {
+    border-left-color: #2196F3;
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* 入力エラー時のスタイル */
+.input-error {
+    border-color: #f44336 !important;
+    box-shadow: 0 0 0 1px rgba(244, 67, 54, 0.2);
+}
+
+/* タイマーエラー時のスタイル */
+.time-error {
+    color: #FF9800;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Display Section */
+.display-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    text-align: center;
+}
+
+.display-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.earnings-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #4CAF50;
+    font-family: 'Courier New', monospace;
+    cursor: help;
+    transition: color 0.3s ease;
+}
+
+.earnings-amount:hover {
+    color: #45a049;
+}
+
+/* 値変更時のアニメーション効果 */
+@keyframes valueChange {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+        color: #45a049;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.value-changed {
+    animation: valueChange 0.3s ease-in-out;
+}
+
+/* 収入増加時のパルスアニメーション */
+@keyframes earningsPulse {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(76, 175, 80, 0);
+    }
+    25% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(76, 175, 80, 0.7);
+    }
+    75% {
+        transform: scale(1.02);
+        text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+.earnings-pulse {
+    animation: earningsPulse 1s ease-in-out;
+}
+
+/* パーティクルアニメーション */
+.money-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.time-amount {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2196F3;
+    font-family: 'Courier New', monospace;
+}
+
+/* Controls Section */
+.controls-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.control-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.control-btn.primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.control-btn.primary:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.control-btn.secondary {
+    background-color: #FF9800;
+    color: white;
+}
+
+.control-btn.secondary:hover {
+    background-color: #f57c00;
+    transform: translateY(-2px);
+}
+
+.control-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.control-btn.running {
+    background-color: #f44336;
+}
+
+.control-btn.running:hover {
+    background-color: #d32f2f;
+}
+
+.control-btn.start {
+    background-color: #4CAF50;
+}
+
+.control-btn.start:hover {
+    background-color: #45a049;
+}
+
+.control-btn.stop {
+    background-color: #f44336;
+}
+
+.control-btn.stop:hover {
+    background-color: #d32f2f;
+}
+
+/* Visualization Section */
+.visualization-section {
+    text-align: center;
+}
+
+.visualization-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+/* 視覚化タブ */
+.visualization-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.viz-tab-btn {
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.viz-tab-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.viz-tab-btn.active {
+    background-color: #2196F3;
+    color: white;
+    border-color: #2196F3;
+}
+
+/* 円グラフ */
+.circle-chart-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.circle-chart {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.circle-chart svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: url(#gradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+}
+
+.circle-progress.animating {
+    animation: circlePulse 0.3s ease-in-out;
+}
+
+@keyframes circlePulse {
+    0% {
+        stroke-width: 8;
+    }
+    50% {
+        stroke-width: 10;
+    }
+    100% {
+        stroke-width: 8;
+    }
+}
+
+.circle-text {
+    fill: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+/* 視覚化切り替えアニメーション */
+@keyframes vizFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes vizFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.viz-transition-in {
+    animation: vizFadeIn 0.3s ease forwards;
+}
+
+.viz-transition-out {
+    animation: vizFadeOut 0.3s ease forwards;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #2196F3);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* プログレスバー更新時のアニメーション効果 */
+.progress-bar.progress-updating {
+    animation: progressPulse 0.3s ease-in-out;
+}
+
+@keyframes progressPulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 0.5rem;
+        width: 100%;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .display-section {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .earnings-amount {
+        font-size: 2.5rem;
+    }
+    
+    .time-amount {
+        font-size: 2rem;
+    }
+    
+    .controls-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 200px;
+        /* Improved touch target size for tablet */
+        padding: 1.2rem 2rem;
+        margin-bottom: 0.5rem;
+        min-height: 60px; /* Ensure minimum height for touch targets */
+    }
+    
+    .visualization-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .viz-tab-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.7rem 1rem;
+        margin-bottom: 0.5rem;
+        min-height: 50px; /* Ensure minimum height for touch targets */
+    }
+    
+    .circle-chart {
+        width: 180px;
+        height: 180px;
+    }
+    
+    /* Improved tablet layout */
+    section {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .wage-input-section input {
+        width: 80%;
+        max-width: 300px;
+        font-size: 1.2rem;
+    }
+    
+    /* Better spacing for tablet */
+    main {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px; /* Slightly smaller base font size for mobile */
+    }
+    
+    .container {
+        padding: 0.8rem 0.4rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    main {
+        gap: 1.2rem;
+    }
+    
+    section {
+        padding: 1rem;
+        border-radius: 6px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .wage-input-section input {
+        width: 100%;
+        max-width: 250px;
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+    
+    .earnings-amount {
+        font-size: 2rem;
+    }
+    
+    .time-amount {
+        font-size: 1.8rem;
+    }
+    
+    /* Enhanced touch targets for mobile */
+    .control-btn {
+        padding: 1.2rem 1rem;
+        font-size: 1.2rem;
+        min-height: 60px; /* Increased minimum touch target height */
+        min-width: 60px; /* Minimum width for touch targets */
+        margin-bottom: 0.8rem;
+        border-radius: 8px; /* Slightly larger border radius for better touch feel */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15); /* Enhanced shadow for better visual feedback */
+    }
+    
+    .viz-tab-btn {
+        padding: 0.8rem 0.5rem;
+        min-height: 50px; /* Increased minimum touch target height */
+        min-width: 80px; /* Minimum width for touch targets */
+        font-size: 1rem;
+        margin: 0 0.3rem 0.5rem;
+    }
+    
+    /* Improved visualization for small screens */
+    .circle-chart {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .progress-container {
+        height: 24px; /* Slightly larger for better touch interaction */
+    }
+    
+    /* Fix for small screen overflow */
+    .error-message {
+        max-width: 100%;
+        font-size: 0.85rem;
+    }
+    
+    /* Improved mobile layout */
+    .visualization-section {
+        padding-bottom: 1.5rem;
+    }
+    
+    .visualization-tabs {
+        justify-content: space-around;
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Better spacing between elements */
+    .wage-input-section label {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Improved touch feedback */
+    .control-btn:active {
+        transform: scale(0.96);
+        opacity: 0.85;
+    }
+    
+    /* Ensure proper spacing in footer for mobile */
+    .accessibility-info {
+        margin-top: 1.5rem;
+    }
+    
+    /* Improved keyboard shortcuts display on mobile */
+    .keyboard-shortcuts {
+        padding: 0.8rem;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+}
+
+/* Small phone optimization */
+@media (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .wage-input-section label {
+        font-size: 1rem;
+    }
+    
+    .wage-input-section input {
+        font-size: 1.1rem;
+        padding: 0.7rem;
+    }
+    
+    .earnings-amount {
+        font-size: 1.8rem;
+    }
+    
+    .time-amount {
+        font-size: 1.6rem;
+    }
+    
+    .control-btn {
+        font-size: 1.1rem;
+        padding: 1rem 0.8rem;
+        min-height: 65px; /* Even larger touch targets for small phones */
+        width: 90%; /* Wider buttons for easier tapping */
+        max-width: 180px;
+    }
+    
+    /* Optimize visualization for very small screens */
+    .circle-chart {
+        width: 130px;
+        height: 130px;
+    }
+    
+    /* Adjust tab buttons for small screens */
+    .viz-tab-btn {
+        padding: 0.7rem 0.4rem;
+        font-size: 0.9rem;
+        min-width: 70px;
+    }
+    
+    /* Optimize layout for small phones */
+    section {
+        padding: 0.8rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    main {
+        gap: 0.8rem;
+    }
+    
+    /* Ensure proper spacing */
+    .visualization-section h2 {
+        margin-bottom: 0.8rem;
+    }
+    
+    /* Optimize display section for small screens */
+    .display-section h2 {
+        margin-bottom: 0.7rem;
+    }
+    
+    /* Ensure keyboard shortcuts are usable on small screens */
+    .keyboard-shortcuts li {
+        margin-bottom: 0.7rem;
+        flex-wrap: wrap;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Visually hidden elements for screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Focus styles for keyboard navigation */
+button:focus-visible,
+input:focus-visible,
+[tabindex="0"]:focus-visible {
+    outline: 3px solid #2196F3;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4);
+    z-index: 1;
+}
+
+/* Remove default focus outline when using mouse */
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+[tabindex="0"]:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    .control-btn,
+    .viz-tab-btn,
+    .progress-bar {
+        forced-color-adjust: none;
+    }
+    
+    button:focus-visible,
+    input:focus-visible,
+    [tabindex="0"]:focus-visible {
+        outline: 3px solid CanvasText;
+    }
+}
+
+/* Skip to content link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2196F3;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Improve focus indication for interactive elements */
+.control-btn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.6);
+}
+
+.viz-tab-btn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.6);
+}
+
+/* Make sure tabbed elements have visible focus */
+#current-earnings:focus-visible,
+#elapsed-time:focus-visible {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+    border-radius: 4px;
+}
+
+/* Touch interaction improvements */
+@media (hover: none) {
+    /* Styles for touch devices */
+    .control-btn {
+        -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remove tap highlight on iOS */
+    }
+    
+    .control-btn:active {
+        transform: scale(0.96); /* Enhanced feedback on touch */
+        opacity: 0.85;
+        transition: transform 0.1s ease, opacity 0.1s ease; /* Faster transition for touch feedback */
+    }
+    
+    .viz-tab-btn:active {
+        background-color: rgba(33, 150, 243, 0.3); /* Enhanced feedback color */
+        transform: scale(0.97); /* Subtle scale effect */
+    }
+    
+    /* Increase spacing between interactive elements for touch */
+    .visualization-tabs {
+        gap: 0.8rem;
+    }
+    
+    /* Improve touch feedback */
+    input[type="number"] {
+        -webkit-appearance: none; /* Remove default iOS styling */
+        margin: 0; /* Remove default margin */
+        font-size: 16px; /* Prevent iOS zoom on focus */
+    }
+    
+    /* Enhanced touch area for all interactive elements */
+    button, 
+    input,
+    .viz-tab-btn,
+    summary {
+        touch-action: manipulation; /* Prevent delays on touch devices */
+    }
+    
+    /* Improved touch spacing */
+    .controls-section {
+        margin: 1rem 0;
+    }
+    
+    /* Better touch feedback for visualization tabs */
+    .visualization-tabs {
+        margin-bottom: 1.2rem;
+    }
+    
+    /* Ensure proper spacing between touch elements */
+    .wage-input-section {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Optimize number input for touch */
+    input[type="number"] {
+        padding: 0.8rem;
+    }
+    
+    /* Prevent double-tap zoom on iOS */
+    .control-btn,
+    .viz-tab-btn {
+        touch-action: manipulation;
+    }
+}
+/* St
+orage Indicator */
+.storage-indicator {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #856404;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid #ffc107;
+    animation: fadeIn 0.5s ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.storage-indicator .icon {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Storage Error Styling */
+.error-message.storage-error {
+    border-left-color: #ffc107;
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #856404;
+}
+
+/* Keyboard Shortcuts and Accessibility Info */
+.accessibility-info {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+.accessibility-info details {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.accessibility-info summary {
+    color: #2196F3;
+    padding: 0.5rem;
+    border-radius: 4px;
+    outline: none;
+}
+
+.accessibility-info summary:focus {
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.4);
+}
+
+.accessibility-info summary:hover {
+    color: #0D47A1;
+    text-decoration: underline;
+}
+
+.keyboard-shortcuts {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.keyboard-shortcuts ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.keyboard-shortcuts li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.keyboard-shortcuts kbd {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: #444;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    margin: 0 0.2rem;
+}
+
+@media (max-width: 480px) {
+    .keyboard-shortcuts {
+        padding: 0.8rem;
+    }
+    
+    .keyboard-shortcuts li {
+        margin-bottom: 0.8rem;
+    }
+}/* Ad
+ditional mobile optimizations */
+@media (max-width: 480px) and (orientation: landscape) {
+    /* Optimize for landscape mode on mobile */
+    .display-section {
+        grid-template-columns: 1fr 1fr; /* Return to two columns in landscape */
+        gap: 1rem;
+    }
+    
+    .controls-section {
+        flex-direction: row; /* Horizontal buttons in landscape */
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .control-btn {
+        width: auto;
+        min-width: 120px;
+        margin-bottom: 0;
+    }
+    
+    /* Adjust visualization for landscape */
+    .circle-chart {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Optimize for different pixel densities */
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) {
+    /* Sharper borders for high-DPI screens */
+    .control-btn,
+    .viz-tab-btn,
+    input,
+    section {
+        border-width: 0.5px;
+    }
+}
+
+/* Safe area insets for notched phones */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* Improved touch feedback for all interactive elements */
+@media (hover: none) {
+    .control-btn,
+    .viz-tab-btn,
+    input[type="number"],
+    summary {
+        cursor: pointer;
+    }
+    
+    /* Ensure minimum touch target size of 44x44px per WCAG guidelines */
+    .control-btn,
+    .viz-tab-btn,
+    input[type="number"],
+    summary {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
