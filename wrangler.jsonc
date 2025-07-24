@@ -1,0 +1,7 @@
+{
+  "name": "hourly-wage-counter",
+  "compatibility_date": "2025-07-24",
+  "assets": {
+    "directory": "./"
+  }
+}
